@@ -33,12 +33,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     });
     const [token, setToken] = useState<string | null>(() => sessionStorage.getItem('token'));
 
-    // Verify token validity on mount (optional but recommended)
-    useEffect(() => {
-        if (token) {
-            refreshUser();
-        }
-    }, [token]);
 
     const login = useCallback((newToken: string, newUser: User) => {
         setToken(newToken);
@@ -64,6 +58,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             console.error('Failed to refresh user:', error);
         }
     }, []);
+
+    // Verify token validity on mount (optional but recommended)
+    useEffect(() => {
+        if (token) {
+            refreshUser();
+        }
+    }, [token, refreshUser]);
 
     const isAuthenticated = !!token && !!user;
     const isAdmin = user?.role === 'ADMIN';

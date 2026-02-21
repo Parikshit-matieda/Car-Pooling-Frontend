@@ -153,7 +153,7 @@ const Landing: React.FC = () => {
         try {
             // Fetch live rides
             const res = await api.get('/rides/today');
-            let allRides = res.data;
+            const allRides = res.data;
 
             setTodayRides(allRides);
 
