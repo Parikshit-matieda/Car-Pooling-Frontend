@@ -53,7 +53,8 @@ const PublicProfile: React.FC = () => {
     const [onlineUserIds, setOnlineUserIds] = useState<Set<number>>(new Set());
 
     useEffect(() => {
-        const socket = io(`http://${window.location.hostname}:4000`);
+        const socketUrl = import.meta.env.VITE_SOCKET_URL || `http://${window.location.hostname}:4000`;
+        const socket = io(socketUrl);
 
         if (user?.user_id) {
             socket.emit('identify', user.user_id);
@@ -127,7 +128,7 @@ const PublicProfile: React.FC = () => {
                         <div className="w-32 h-32 bg-white rounded-[40px] mx-auto mb-6 flex items-center justify-center text-5xl font-black shadow-xl border-4 border-white overflow-hidden relative group">
                             {profile.profile_photo ? (
                                 <img
-                                    src={`http://localhost:4000/${profile.profile_photo}`}
+                                    src={`${import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:4000'}/${profile.profile_photo}`}
                                     alt={profile.full_name}
                                     className="w-full h-full object-cover"
                                 />
@@ -256,7 +257,7 @@ const PublicProfile: React.FC = () => {
                                                         <div key={pIdx} className="flex items-center gap-3 bg-white pl-2 pr-4 py-2 rounded-[20px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                                                             <div className="w-10 h-10 rounded-xl overflow-hidden bg-gray-50 flex items-center justify-center text-xs font-black border border-gray-50">
                                                                 {p.profile_photo ? (
-                                                                    <img src={`http://localhost:4000/${p.profile_photo}`} alt="" className="w-full h-full object-cover" />
+                                                                    <img src={`${import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:4000'}/${p.profile_photo}`} alt="" className="w-full h-full object-cover" />
                                                                 ) : (
                                                                     <span className="bg-yellow-400 w-full h-full flex items-center justify-center">{p.full_name.charAt(0)}</span>
                                                                 )}
@@ -300,7 +301,7 @@ const PublicProfile: React.FC = () => {
                                         {/* Avatar */}
                                         <div className="w-8 h-8 bg-[#f7d302] rounded-xl overflow-hidden flex items-center justify-center text-black font-black text-sm shrink-0">
                                             {rev.reviewer_photo
-                                                ? <img src={`http://localhost:4000/${rev.reviewer_photo}`} alt="" className="w-full h-full object-cover" />
+                                                ? <img src={`${import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:4000'}/${rev.reviewer_photo}`} alt="" className="w-full h-full object-cover" />
                                                 : rev.reviewer_name.charAt(0)}
                                         </div>
                                         {/* Name */}

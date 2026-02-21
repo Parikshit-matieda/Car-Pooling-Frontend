@@ -48,7 +48,8 @@ const LiveTrackingMap: React.FC<LiveTrackingMapProps> = ({ rideId, isDriver, pic
 
     useEffect(() => {
         // Initialize Socket
-        socketRef.current = io(`http://${window.location.hostname}:4000`);
+        const socketUrl = import.meta.env.VITE_SOCKET_URL || `http://${window.location.hostname}:4000`;
+        socketRef.current = io(socketUrl);
 
         socketRef.current.emit('join-ride', rideId.toString());
 
