@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+/* Leaflet styles */
+@import "leaflet/dist/leaflet.css";
+
+:root {
+    /* Blinkit Brand Palette */
+    --blinkit-yellow: #f7d302;
+    --blinkit-black: #1c1c1c;
+    --blinkit-white: #ffffff;
+    --blinkit-gray-bg: #f5f5f5;
+    --blinkit-gray-text: #757575;
+    --blinkit-border: #eeeeee;
+
+    /* Overriding existing indigo/primary with Blinkit Yellow/Black */
+    --primary-color: var(--blinkit-yellow);
+    --primary-text: var(--blinkit-black);
+    --accent-color: #0c831f;
+    /* Blinkit secondary green */
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--blinkit-white);
+    color: var(--blinkit-black);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--blinkit-gray-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dbdbdb;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #cbd5e1;
+}
+
+/* Custom Premium Markers */
+.custom-marker-pin {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid white;
+}
+
+.custom-marker-pin::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    margin: 3px 0 0 3px;
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+}
+
+/* Hover & Drag Effects */
+.leaflet-marker-icon:hover .custom-marker-pin {
+    transform: rotate(-45deg) scale(1.1);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.leaflet-marker-dragging .custom-marker-pin {
+    transform: rotate(-45deg) scale(1.3) translateY(-10px) translateX(10px);
+    box-shadow: 0 25px 30px -5px rgb(0 0 0 / 0.2), 0 10px 15px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Dragging Cursor */
+.leaflet-marker-draggable {
+    cursor: grab !important;
+}
+
+.leaflet-marker-draggable:active {
+    cursor: grabbing !important;
+}
+
+/* Global Animations & Utilities */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoom-in {
+    from {
+        opacity: 0;
+        scale: 0.95;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-slide-in {
+    animation: slide-in 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-zoom-in {
+    animation: zoom-in 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Friendly Card Hover */
+.friendly-card-hover {
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.friendly-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+}
+
+/* Custom Selection */
+::selection {
+    background: #f7d302;
+    color: black;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #1c1c1c;
+    border-radius: 10px;
+}
