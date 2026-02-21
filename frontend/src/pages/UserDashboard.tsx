@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -17,11 +17,8 @@ const UserDashboard: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
 
-    useEffect(() => {
-        refreshData().finally(() => setLoading(false));
-    }, []);
 
-    const refreshData = async () => {
+    const refreshData = useCallback(async () => {
         try {
             const response = await api.get('/users/me/dashboard');
             const { stats: realStats, recentActivity: realActivity } = response.data;
@@ -38,7 +35,11 @@ const UserDashboard: React.FC = () => {
         } catch (error) {
             console.error('Error refreshing dashboard data', error);
         }
-    };
+    }, []);
+
+    useEffect(() => {
+        refreshData().finally(() => setLoading(false));
+    }, [refreshData]);
 
 
     if (loading) {
