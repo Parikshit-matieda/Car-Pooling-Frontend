@@ -518,7 +518,7 @@ const Landing: React.FC = () => {
                         <p className="text-black/60 font-bold uppercase tracking-widest text-[10px] mb-1.5">Tap a route to see rides instantly</p>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
                         {[
                             { name: 'Ahmedabad' },
                             { name: 'Vadodara' },
@@ -526,8 +526,8 @@ const Landing: React.FC = () => {
                             { name: 'Anand' },
                             { name: 'Kheda' }
                         ].map((city) => (
-                            <div key={city.name} className="bg-white rounded-[24px] p-4 shadow-lg hover:shadow-xl hover:scale-105 transition-all group">
-                                <div className="flex items-center gap-3 mb-3">
+                            <div key={city.name} className="bg-white rounded-[24px] p-5 shadow-lg hover:shadow-xl hover:scale-105 transition-all group">
+                                <div className="flex items-center gap-3 mb-4">
                                     <h3 className="text-sm font-black text-black">{city.name}</h3>
                                 </div>
 
@@ -576,16 +576,16 @@ const Landing: React.FC = () => {
             {isAuthenticated && templates.length > 0 && (
                 <section className="py-12 px-4 bg-gray-50 border-b border-gray-100 animate-slide-in">
                     <div className="max-w-7xl mx-auto">
-                        <div className="flex flex-col md:flex-row items-end gap-3 mb-8">
+                        <div className="flex flex-col md:flex-row items-start md:items-end gap-3 mb-8">
                             <h2 className="text-3xl font-[1000] text-black tracking-tighter leading-none" style={{ fontFamily: "'Outfit', sans-serif" }}>
                                 Your Ride <span className="text-[#f7d302] stroke-black" style={{ WebkitTextStroke: '1px black' }}>Templates</span>
                             </h2>
-                            <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-1.5">Quick publish your daily routes</p>
+                            <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[9px] sm:text-[10px] mb-1.5">Quick publish your daily routes</p>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {templates.map((template) => (
-                                <div key={template.template_id} className="bg-white p-6 rounded-[32px] border border-black/5 hover:border-[#f7d302] hover:shadow-xl transition-all group relative overflow-hidden">
+                                <div key={template.template_id} className="bg-white p-5 sm:p-7 rounded-[24px] sm:rounded-[32px] border border-black/5 hover:border-[#f7d302] hover:shadow-xl transition-all group relative overflow-hidden">
                                     <div className="flex justify-between items-start mb-4">
                                         <div className="flex items-center gap-3">
                                             <div className="w-10 h-10 bg-[#f7d302]/10 rounded-xl flex items-center justify-center text-xl group-hover:bg-[#f7d302] transition-colors">
@@ -929,12 +929,12 @@ const Landing: React.FC = () => {
                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
                                 <div>
-                                    <h2 className="text-4xl font-[1000] text-black tracking-tighter leading-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                                    <h2 className="text-3xl sm:text-4xl font-[1000] text-black tracking-tighter leading-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
                                         Activity Center
                                     </h2>
-                                    <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px] mt-2">Real-time snapshots of your journeys</p>
+                                    <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[8px] sm:text-[10px] mt-2">Real-time snapshots of your journeys</p>
                                 </div>
-                                <Link to="/my-rides" className="bg-black text-white px-8 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-gray-800 transition-all">
+                                <Link to="/my-rides" className="w-full md:w-auto text-center justify-center bg-black text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-gray-800 transition-all flex items-center">
                                     Manage Everything ➔
                                 </Link>
                             </div>
@@ -943,7 +943,7 @@ const Landing: React.FC = () => {
 
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                                 {/* Section 1: Booked Rides */}
-                                <div className="bg-gray-50 rounded-[48px] p-10 border border-gray-100 relative group overflow-hidden h-full">
+                                <div className="bg-gray-50 rounded-[32px] sm:rounded-[48px] p-6 sm:p-10 border border-gray-100 relative group overflow-hidden h-full">
                                     <div className="relative z-10">
                                         <div className="flex items-center gap-4 mb-8">
                                             <span className="text-4xl">🎫</span>
@@ -959,7 +959,7 @@ const Landing: React.FC = () => {
                                             <div className="space-y-4">
                                                 {myBookings.length > 0 ? (
                                                     myBookings.map((item, idx) => (
-                                                        <div key={idx} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex justify-between items-center hover:shadow-md transition-all group/item">
+                                                        <div key={idx} className="bg-white p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-sm border border-gray-100 flex justify-between items-center hover:shadow-md transition-all group/item">
                                                             <div>
                                                                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">{item.ride_details?.ride_date}</p>
                                                                 <p className="font-black text-black">{item.ride_details?.source} ➔ {item.ride_details?.destination}</p>
@@ -984,7 +984,7 @@ const Landing: React.FC = () => {
                                 </div>
 
                                 {/* Section 2: Published Rides */}
-                                <div className="bg-black rounded-[48px] p-10 border border-gray-800 relative group overflow-hidden h-full text-white">
+                                <div className="bg-black rounded-[32px] sm:rounded-[48px] p-6 sm:p-10 border border-gray-800 relative group overflow-hidden h-full text-white">
                                     <div className="relative z-10">
                                         <div className="flex items-center gap-4 mb-8">
                                             <span className="text-4xl">🚗</span>
@@ -1000,7 +1000,7 @@ const Landing: React.FC = () => {
                                             <div className="space-y-4">
                                                 {myRides.length > 0 ? (
                                                     myRides.map((item, idx) => (
-                                                        <div key={idx} className="bg-white/5 p-6 rounded-3xl border border-white/10 flex justify-between items-center hover:bg-white/10 transition-all group/item">
+                                                        <div key={idx} className="bg-white/5 p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/10 flex justify-between items-center hover:bg-white/10 transition-all group/item">
                                                             <div>
                                                                 <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">{item.ride_date}</p>
                                                                 <p className="font-black text-white">{item.source} ➔ {item.destination}</p>
@@ -1068,17 +1068,17 @@ const Landing: React.FC = () => {
             {/* Instant Benefit Cards */}
             <section className="py-20 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="bg-white p-10 rounded-[40px] border border-gray-100 shadow-sm transition-all hover:shadow-xl group">
+                    <div className="bg-white p-6 sm:p-10 rounded-[32px] sm:rounded-[40px] border border-gray-100 shadow-sm transition-all hover:shadow-xl group">
                         <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:rotate-12 transition-transform">💰</div>
                         <h3 className="text-2xl font-black mb-4">Lowest Prices, Period.</h3>
                         <p className="text-gray-500 font-medium leading-relaxed">Save up to 70% compared to private cabs. We prioritize your pocket above all.</p>
                     </div>
-                    <div className="bg-white p-10 rounded-[40px] border border-gray-100 shadow-sm transition-all hover:shadow-xl group">
+                    <div className="bg-white p-6 sm:p-10 rounded-[32px] sm:rounded-[40px] border border-gray-100 shadow-sm transition-all hover:shadow-xl group">
                         <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:rotate-12 transition-transform">🛡️</div>
                         <h3 className="text-2xl font-black mb-4">Verified Members Only</h3>
                         <p className="text-gray-500 font-medium leading-relaxed">Safety is our priority. Every member is verified with ID and phone checks.</p>
                     </div>
-                    <div className="bg-white p-10 rounded-[40px] border border-gray-100 shadow-sm transition-all hover:shadow-xl group">
+                    <div className="bg-white p-6 sm:p-10 rounded-[32px] sm:rounded-[40px] border border-gray-100 shadow-sm transition-all hover:shadow-xl group">
                         <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:rotate-12 transition-transform">⚡</div>
                         <h3 className="text-2xl font-black mb-4">Instant Booking</h3>
                         <p className="text-gray-500 font-medium leading-relaxed">No more waiting for back-and-forth messages. Book your seat in just two taps.</p>
