@@ -93,7 +93,7 @@ const Register: React.FC = () => {
             <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-black/5 rounded-full blur-3xl"></div>
             <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-black/5 rounded-full blur-3xl shadow-inner"></div>
 
-            <div className="max-w-5xl w-full animate-fade-in relative z-10 grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-0 bg-white rounded-[64px] overflow-hidden shadow-2xl border-4 border-black/5 h-[90vh]">
+            <div className="max-w-5xl w-full animate-fade-in relative z-10 grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-0 bg-white rounded-[32px] sm:rounded-[64px] overflow-hidden shadow-2xl border-4 border-black/5 h-auto lg:h-[90vh]">
                 {/* Visual Side (Branding) */}
                 <div className="bg-black p-12 lg:p-16 flex flex-col justify-between relative overflow-hidden hidden lg:flex">
                     <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">

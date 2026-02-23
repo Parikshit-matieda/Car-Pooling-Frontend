@@ -12,11 +12,19 @@
     --blinkit-gray-text: #757575;
     --blinkit-border: #eeeeee;
 
-    /* Overriding existing indigo/primary with Blinkit Yellow/Black */
-    --primary-color: var(--blinkit-yellow);
-    --primary-text: var(--blinkit-black);
-    --accent-color: #0c831f;
     /* Blinkit secondary green */
+    --accent-color: #0c831f;
+}
+
+@layer base {
+    html {
+        font-size: 14px;
+    }
+    @media (min-width: 768px) {
+        html {
+            font-size: 16px;
+        }
+    }
 }
 
 body {

@@ -416,24 +416,24 @@ const Landing: React.FC = () => {
             <section className="bg-[#f7d302] pb-32 pt-12 px-4">
                 <div className="max-w-7xl mx-auto flex flex-col items-center">
                     <div className="text-center mb-10 animate-fade-in">
-                        <h1 className="text-6xl md:text-8xl font-black text-black mb-6 tracking-tighter leading-[0.9]" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-black text-black mb-6 tracking-tighter leading-[0.9]" style={{ fontFamily: "'Outfit', sans-serif" }}>
                             Share Together <br />
-                            <span className="bg-black text-white px-6 py-2 inline-block -rotate-2 rounded-2xl transform origin-center mt-2 shadow-xl border-4 border-black">Ride Together</span>
+                            <span className="bg-black text-white px-4 sm:px-6 py-2 inline-block -rotate-2 rounded-xl sm:rounded-2xl transform origin-center mt-2 shadow-xl border-4 border-black">Ride Together</span>
                         </h1>
-                        <p className="text-black/60 font-bold text-xl md:text-2xl max-w-2xl mx-auto">Fast, safe, and pocket-friendly carpooling for Gujarat.</p>
+                        <p className="text-black/60 font-bold text-lg md:text-2xl max-w-2xl mx-auto px-4">Fast, safe, and pocket-friendly carpooling for Gujarat.</p>
                     </div>
 
                     {/* High-Visibility Search Card */}
-                    <div className="w-full max-w-5xl bg-white rounded-[32px] shadow-2xl p-2 sm:p-3 animate-slide-in relative">
-                        <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-stretch gap-2">
+                    <div className="w-full max-w-5xl bg-white rounded-[24px] sm:rounded-[32px] shadow-2xl p-2 sm:p-3 animate-slide-in relative mx-auto">
+                        <form onSubmit={handleSearch} className="flex flex-col lg:flex-row items-stretch gap-2">
                             <div className="flex-1 relative">
-                                <div className="flex items-center bg-gray-50 rounded-2xl px-6 py-5 group focus-within:ring-2 focus-within:ring-black/5 transition-all">
-                                    <span className="text-2xl mr-4 group-focus-within:scale-110 transition-transform">📍</span>
+                                <div className="flex items-center bg-gray-50 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 group focus-within:ring-2 focus-within:ring-black/5 transition-all">
+                                    <span className="text-xl sm:text-2xl mr-3 sm:mr-4 group-focus-within:scale-110 transition-transform">📍</span>
                                     <input
                                         type="text"
                                         placeholder="From"
                                         value={searchPickup}
-                                        className="bg-transparent w-full outline-none font-black text-gray-800 placeholder:text-gray-300 text-lg"
+                                        className="bg-transparent w-full outline-none font-black text-gray-800 placeholder:text-gray-300 text-base sm:text-lg"
                                         onChange={(e) => setSearchPickup(e.target.value)}
                                         onFocus={() => setSearchingFor('pickup')}
                                     />
@@ -451,13 +451,13 @@ const Landing: React.FC = () => {
                             </div>
 
                             <div className="flex-1 relative">
-                                <div className="flex items-center bg-gray-50 rounded-2xl px-6 py-5 group focus-within:ring-2 focus-within:ring-black/5 transition-all">
-                                    <span className="text-2xl mr-4 group-focus-within:scale-110 transition-transform">🎯</span>
+                                <div className="flex items-center bg-gray-50 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 group focus-within:ring-2 focus-within:ring-black/5 transition-all">
+                                    <span className="text-xl sm:text-2xl mr-3 sm:mr-4 group-focus-within:scale-110 transition-transform">🎯</span>
                                     <input
                                         type="text"
                                         placeholder="To"
                                         value={searchDropoff}
-                                        className="bg-transparent w-full outline-none font-black text-gray-800 placeholder:text-gray-300 text-lg"
+                                        className="bg-transparent w-full outline-none font-black text-gray-800 placeholder:text-gray-300 text-base sm:text-lg"
                                         onChange={(e) => setSearchDropoff(e.target.value)}
                                         onFocus={() => setSearchingFor('dropoff')}
                                     />
@@ -473,30 +473,30 @@ const Landing: React.FC = () => {
                                 )}
                             </div>
 
-                            <div className="md:w-48 flex items-center bg-gray-50 rounded-2xl px-6 py-5 cursor-pointer hover:bg-gray-100 transition-all">
-                                <span className="text-xl mr-3">📅</span>
+                            <div className="lg:w-48 flex items-center bg-gray-50 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 cursor-pointer hover:bg-gray-100 transition-all">
+                                <span className="text-lg sm:text-xl mr-2 sm:mr-3">📅</span>
                                 <input
                                     type="date"
                                     value={date}
                                     min={new Date().toISOString().split('T')[0]}
-                                    className="bg-transparent w-full outline-none font-black text-gray-800 cursor-pointer text-sm"
+                                    className="bg-transparent w-full outline-none font-black text-gray-800 cursor-pointer text-xs sm:text-sm"
                                     onChange={(e) => setDate(e.target.value)}
                                 />
                             </div>
 
-                            <div className="md:w-32 flex items-center bg-gray-50 rounded-2xl px-6 py-5 cursor-pointer hover:bg-gray-100 transition-all">
-                                <span className="text-xl mr-3">👥</span>
+                            <div className="lg:w-32 flex items-center bg-gray-50 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 cursor-pointer hover:bg-gray-100 transition-all">
+                                <span className="text-lg sm:text-xl mr-2 sm:mr-3">👥</span>
                                 <input
                                     type="number"
                                     min="1"
                                     max="8"
                                     value={seats}
-                                    className="bg-transparent w-full outline-none font-black text-gray-800 cursor-pointer text-sm"
+                                    className="bg-transparent w-full outline-none font-black text-gray-800 cursor-pointer text-xs sm:text-sm"
                                     onChange={(e) => setSeats(parseInt(e.target.value) || 1)}
                                 />
                             </div>
 
-                            <button type="submit" className="bg-black text-white px-10 py-5 rounded-[24px] font-black text-xl uppercase tracking-widest hover:bg-gray-900 transition-all active:scale-95 shadow-xl shadow-black/10">
+                            <button type="submit" className="bg-black text-white px-8 sm:px-10 py-5 rounded-xl sm:rounded-[24px] font-black text-lg sm:text-xl uppercase tracking-widest hover:bg-gray-900 transition-all active:scale-95 shadow-xl shadow-black/10">
                                 {loading ? <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin"></div> : 'Find Ride'}
                             </button>
                         </form>
