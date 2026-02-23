@@ -205,7 +205,7 @@ const MyRides: React.FC = () => {
         };
 
         return (
-            <div className={`bg-white rounded-[40px] p-8 border border-black/5 shadow-sm hover:shadow-xl transition-all relative overflow-hidden ${isCancelled ? 'opacity-75 grayscale-[0.5]' : ''}`}>
+            <div className={`bg-white rounded-[32px] sm:rounded-[40px] p-5 sm:p-8 border border-black/5 shadow-sm hover:shadow-xl transition-all relative overflow-hidden ${isCancelled ? 'opacity-75 grayscale-[0.5]' : ''}`}>
                 {isCancelled && <div className="absolute top-0 right-0 bg-red-500 text-white px-6 py-2 rounded-bl-[24px] font-black text-[10px] uppercase tracking-widest z-10">Cancelled</div>}
                 {isCompleted && <div className="absolute top-0 right-0 bg-green-500 text-white px-6 py-2 rounded-bl-[24px] font-black text-[10px] uppercase tracking-widest z-10">Completed</div>}
                 {!isCancelled && !isCompleted && (
@@ -237,14 +237,14 @@ const MyRides: React.FC = () => {
                         <div className="w-4 h-4 rounded-full bg-yellow-400 border-4 border-white shadow-sm z-10 mt-1"></div>
                         <div className="flex-1">
                             <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Pickup</p>
-                            <p className="font-bold text-black text-sm">{ride.source}</p>
+                            <p className="font-bold text-black text-[13px] sm:text-sm">{ride.source}</p>
                         </div>
                     </div>
                     <div className="flex items-start gap-4 relative">
                         <div className="w-4 h-4 rounded-full bg-black border-4 border-white shadow-sm z-10 mt-1"></div>
                         <div className="flex-1">
                             <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Dropoff</p>
-                            <p className="font-bold text-black text-sm">{ride.destination}</p>
+                            <p className="font-bold text-black text-[13px] sm:text-sm">{ride.destination}</p>
                         </div>
                     </div>
                 </div>
@@ -566,26 +566,30 @@ const MyRides: React.FC = () => {
                     <div className="space-y-6">
                         <div>
                             <div className="bg-yellow-400 text-black px-4 py-1.5 rounded-full inline-block font-black text-[10px] uppercase tracking-[0.2em] mb-4">Your Journeys</div>
-                            <h1 className="text-6xl font-[1000] text-black tracking-tighter leading-none">
+                            <h1 className="text-4xl sm:text-6xl font-[1000] text-black tracking-tighter leading-none">
                                 My <span className="text-yellow-400" style={{ WebkitTextStroke: '2px black' }}>Rides</span>
                             </h1>
                         </div>
-                        <div className="inline-flex bg-white p-1.5 rounded-3xl border border-black/5 shadow-lg">
-                            {(['PUBLISHED', 'TAKEN'] as const).map(tab => (
-                                <button key={tab} onClick={() => setMainTab(tab)} className={`px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all ${mainTab === tab ? 'bg-yellow-400 text-black shadow-md' : 'text-gray-400 hover:text-black hover:bg-gray-50'}`}>
-                                    {tab === 'PUBLISHED' ? 'Published' : 'Taken'} Rides
-                                </button>
-                            ))}
+                        <div className="inline-flex w-full overflow-x-auto pb-2 md:pb-0 md:w-auto bg-white p-1.5 rounded-3xl border border-black/5 shadow-lg no-scrollbar">
+                            <div className="flex gap-1.5 min-w-max">
+                                {(['PUBLISHED', 'TAKEN'] as const).map(tab => (
+                                    <button key={tab} onClick={() => setMainTab(tab)} className={`px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all ${mainTab === tab ? 'bg-yellow-400 text-black shadow-md' : 'text-gray-400 hover:text-black hover:bg-gray-50'}`}>
+                                        {tab === 'PUBLISHED' ? 'Published' : 'Taken'} Rides
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
-                    <div className="bg-white p-2 rounded-[32px] flex flex-wrap gap-2 border border-black/5 shadow-xl">
-                        {(['ACTIVE', 'HISTORY', 'CANCELLED'] as const).map(tab => (
-                            <button key={tab} onClick={() => setActiveTab(tab)} className={`px-8 py-4 rounded-[24px] font-black text-[10px] uppercase tracking-widest transition-all ${activeTab === tab ? 'bg-black text-white shadow-xl translate-y-[-2px]' : 'text-gray-400 hover:text-black hover:bg-gray-50'}`}>
-                                {tab}
-                                {getCount(tab) > 0 && <span className="ml-2 opacity-50">({getCount(tab)})</span>}
-                            </button>
-                        ))}
+                    <div className="w-full overflow-x-auto pb-4 md:pb-0 no-scrollbar">
+                        <div className="inline-flex bg-white p-2 rounded-[32px] gap-2 border border-black/5 shadow-xl min-w-max">
+                            {(['ACTIVE', 'HISTORY', 'CANCELLED'] as const).map(tab => (
+                                <button key={tab} onClick={() => setActiveTab(tab)} className={`px-8 py-4 rounded-[24px] font-black text-[10px] uppercase tracking-widest transition-all ${activeTab === tab ? 'bg-black text-white shadow-xl translate-y-[-2px]' : 'text-gray-400 hover:text-black hover:bg-gray-50'}`}>
+                                    {tab}
+                                    {getCount(tab) > 0 && <span className="ml-2 opacity-50">({getCount(tab)})</span>}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
