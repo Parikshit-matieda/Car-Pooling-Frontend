@@ -456,23 +456,23 @@ const RideCreationFlow: React.FC = () => {
                 <div className="max-w-4xl mx-auto flex items-center justify-between">
                     {[1, 2, 3, 4, 5, 6, 7].map((s) => (
                         <div key={s} className="flex items-center flex-1 last:flex-none relative">
-                            <div className={`w-12 h-12 rounded-[18px] flex items-center justify-center font-black transition-all relative z-10 ${step >= s ? 'bg-black text-white scale-110 shadow-xl' : 'bg-white/40 text-black/30'}`}>
+                            <div className={`w-8 h-8 sm:w-12 sm:h-12 rounded-[12px] sm:rounded-[18px] flex items-center justify-center font-black transition-all relative z-10 text-xs sm:text-base ${step >= s ? 'bg-black text-white scale-110 shadow-xl' : 'bg-white/40 text-black/30'}`}>
                                 {step > s ? '✓' : s}
                             </div>
                             {s < 7 && (
-                                <div className={`h-1 flex-1 mx-2 rounded-full transition-all ${step > s ? 'bg-black' : 'bg-black/10'}`}></div>
+                                <div className={`h-1 flex-1 mx-1.5 sm:mx-2 rounded-full transition-all ${step > s ? 'bg-black' : 'bg-black/10'}`}></div>
                             )}
                         </div>
                     ))}
                 </div>
-                <div className="max-w-4xl mx-auto mt-6 flex justify-between px-1">
-                    <span className={`text-[10px] font-black uppercase tracking-widest ${step >= 1 ? 'text-black' : 'text-black/30'}`}>Route</span>
-                    <span className={`text-[10px] font-black uppercase tracking-widest ${step >= 2 ? 'text-black' : 'text-black/30'}`}>Confirm Point</span>
-                    <span className={`text-[10px] font-black uppercase tracking-widest ${step >= 3 ? 'text-black' : 'text-black/30'}`}>Path</span>
-                    <span className={`text-[10px] font-black uppercase tracking-widest ${step >= 4 ? 'text-black' : 'text-black/30'}`}>Stops</span>
-                    <span className={`text-[10px] font-black uppercase tracking-widest ${step >= 5 ? 'text-black' : 'text-black/30'}`}>Date & Time</span>
-                    <span className={`text-[10px] font-black uppercase tracking-widest ${step >= 6 ? 'text-black' : 'text-black/30'}`}>Fare</span>
-                    <span className={`text-[10px] font-black uppercase tracking-widest ${step >= 7 ? 'text-black' : 'text-black/30'}`}>Review</span>
+                <div className="max-w-4xl mx-auto mt-6 flex justify-between px-1 overflow-x-auto no-scrollbar gap-2">
+                    <span className={`text-[8px] sm:text-[10px] font-black uppercase tracking-widest whitespace-nowrap ${step >= 1 ? 'text-black' : 'text-black/30'}`}>Route</span>
+                    <span className={`text-[8px] sm:text-[10px] font-black uppercase tracking-widest whitespace-nowrap ${step >= 2 ? 'text-black' : 'text-black/30'}`}>Point</span>
+                    <span className={`text-[8px] sm:text-[10px] font-black uppercase tracking-widest whitespace-nowrap ${step >= 3 ? 'text-black' : 'text-black/30'}`}>Path</span>
+                    <span className={`text-[8px] sm:text-[10px] font-black uppercase tracking-widest whitespace-nowrap ${step >= 4 ? 'text-black' : 'text-black/30'}`}>Stops</span>
+                    <span className={`text-[8px] sm:text-[10px] font-black uppercase tracking-widest whitespace-nowrap ${step >= 5 ? 'text-black' : 'text-black/30'}`}>Time</span>
+                    <span className={`text-[8px] sm:text-[10px] font-black uppercase tracking-widest whitespace-nowrap ${step >= 6 ? 'text-black' : 'text-black/30'}`}>Fare</span>
+                    <span className={`text-[8px] sm:text-[10px] font-black uppercase tracking-widest whitespace-nowrap ${step >= 7 ? 'text-black' : 'text-black/30'}`}>Review</span>
                 </div>
             </div>
 
@@ -963,15 +963,15 @@ const RideCreationFlow: React.FC = () => {
                         >
                             <span className="text-xl group-hover:-translate-x-1 transition-transform">⬅️</span>
                         </button>
-                        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+                        <div className="flex flex-col md:flex-row justify-between items-start gap-8 sm:gap-12 mb-10 sm:mb-16">
                             <div className="flex-1">
-                                <h2 className="text-6xl font-[1000] text-black leading-[0.9] tracking-tighter mb-4">
+                                <h2 className="text-4xl sm:text-6xl font-[1000] text-black leading-[0.9] tracking-tighter mb-4">
                                     Journey <br />
                                     <span className="bg-[#f7d302] px-6 py-2 inline-block -rotate-1 skew-x-1">Fare Details</span>
                                 </h2>
-                                <p className="text-[12px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">Configure individual segment pricing</p>
+                                <p className="text-[10px] sm:text-[12px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">Configure individual segment pricing</p>
                             </div>
-                            <div className="bg-black p-10 rounded-[48px] text-white shadow-2xl shadow-black/30 min-w-[320px] relative overflow-hidden group border-4 border-[#f7d302]/20">
+                            <div className="bg-black p-6 sm:p-10 rounded-[32px] sm:rounded-[48px] text-white shadow-2xl shadow-black/30 w-full sm:min-w-[320px] relative overflow-hidden group border-4 border-[#f7d302]/20">
                                 <div className="absolute -top-10 -right-10 w-48 h-48 bg-[#f7d302]/10 rounded-full blur-3xl group-hover:bg-[#f7d302]/20 transition-all duration-700"></div>
                                 <div className="relative z-10">
                                     <div className="flex items-center justify-between mb-4">
@@ -979,7 +979,7 @@ const RideCreationFlow: React.FC = () => {
                                         <span className="bg-white/10 text-[9px] font-black px-3 py-1 rounded-full text-white/40 uppercase tracking-widest">Calculated</span>
                                     </div>
                                     <div className="flex items-center gap-4">
-                                        <span className="text-4xl font-black text-[#f7d302] italic">₹</span>
+                                        <span className="text-3xl font-black text-[#f7d302] italic">₹</span>
                                         <input
                                             type="number"
                                             value={fullJourneyPrice}
@@ -987,7 +987,7 @@ const RideCreationFlow: React.FC = () => {
                                                 setIsManualPrice(true);
                                                 setFullJourneyPrice(e.target.value);
                                             }}
-                                            className="bg-transparent border-none outline-none text-7xl font-[1000] w-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none placeholder:text-white/5 tracking-tighter"
+                                            className="bg-transparent border-none outline-none text-5xl sm:text-7xl font-[1000] w-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none placeholder:text-white/5 tracking-tighter"
                                         />
                                         {isManualPrice && (
                                             <button
@@ -1002,41 +1002,41 @@ const RideCreationFlow: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="p-12 bg-gray-50/50 rounded-[64px] border border-black/5 relative overflow-hidden mb-16 shadow-inner">
+                        <div className="p-6 sm:p-12 bg-gray-50/50 rounded-[48px] sm:rounded-[64px] border border-black/5 relative overflow-hidden mb-16 shadow-inner">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-[#f7d302]/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
 
                             <div className="space-y-0 relative max-w-2xl mx-auto">
                                 {/* Segment 1: Source to Stop 1 */}
                                 {stops.length > 0 && (
-                                    <div className="relative pl-24 pb-16 group animate-fade-in">
-                                        <div className="absolute left-[34px] top-6 bottom-0 w-2 bg-black/5 rounded-full group-hover:bg-[#f7d302]/10 transition-colors"></div>
-                                        <div className="absolute left-0 top-2 w-18 h-18 rounded-[28px] border-[5px] border-black bg-[#f7d302] shadow-2xl shadow-[#f7d302]/30 z-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                                            <span className="text-3xl">🏠</span>
+                                    <div className="relative pl-16 sm:pl-24 pb-12 sm:pb-16 group animate-fade-in">
+                                        <div className="absolute left-[26px] sm:left-[34px] top-6 bottom-0 w-1.5 sm:w-2 bg-black/5 rounded-full group-hover:bg-[#f7d302]/10 transition-colors"></div>
+                                        <div className="absolute left-0 top-2 w-14 h-14 sm:w-18 sm:h-18 rounded-[20px] sm:rounded-[28px] border-[4px] sm:border-[5px] border-black bg-[#f7d302] shadow-2xl shadow-[#f7d302]/30 z-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                                            <span className="text-2xl sm:text-3xl">🏠</span>
                                         </div>
 
-                                        <div className="flex flex-col md:flex-row justify-between items-center bg-white p-8 rounded-[40px] shadow-xl border border-black/[0.03] group-hover:border-[#f7d302] transition-all relative z-10 group-hover:-translate-y-1">
+                                        <div className="flex flex-col md:flex-row justify-between items-center bg-white p-5 sm:p-8 rounded-[32px] sm:rounded-[40px] shadow-xl border border-black/[0.03] group-hover:border-[#f7d302] transition-all relative z-10 group-hover:-translate-y-1">
                                             <div className="flex-1 w-full mb-6 md:mb-0">
                                                 <div className="flex items-center gap-3 mb-2">
                                                     <span className="text-[10px] font-black text-white bg-black px-3 py-1 rounded-full uppercase tracking-widest">LEG 01</span>
                                                     <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">Pickup</span>
                                                 </div>
-                                                <p className="font-black text-black text-2xl tracking-tighter leading-tight uppercase line-clamp-1">{source?.address.split(',')[0]} → {stops[0].address.split(',')[0]}</p>
+                                                <p className="font-black text-black text-lg sm:text-2xl tracking-tighter leading-tight uppercase line-clamp-1">{source?.address.split(',')[0]} → {stops[0].address.split(',')[0]}</p>
                                             </div>
-                                            <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-[32px] shadow-inner group-hover:bg-[#f7d302]/10 transition-colors border border-transparent group-hover:border-[#f7d302]/20">
-                                                <button onClick={() => adjustPrice('stop', stops[0].id, -50)} className="w-12 h-12 rounded-[20px] bg-white text-black flex items-center justify-center font-black hover:bg-black hover:text-white transition-all text-lg shadow-sm">－</button>
-                                                <div className="flex flex-col items-center w-24">
-                                                    <span className="text-[9px] font-black text-gray-400 uppercase tracking-wider mb-1">PRICE</span>
+                                            <div className="flex items-center gap-4 bg-gray-50 p-3 sm:p-4 rounded-[24px] sm:rounded-[32px] shadow-inner group-hover:bg-[#f7d302]/10 transition-colors border border-transparent group-hover:border-[#f7d302]/20">
+                                                <button onClick={() => adjustPrice('stop', stops[0].id, -50)} className="w-10 h-10 sm:w-12 sm:h-12 rounded-[16px] sm:rounded-[20px] bg-white text-black flex items-center justify-center font-black hover:bg-black hover:text-white transition-all text-base sm:text-lg shadow-sm">－</button>
+                                                <div className="flex flex-col items-center w-20 sm:w-24">
+                                                    <span className="text-[8px] sm:text-[9px] font-black text-gray-400 uppercase tracking-wider mb-1">PRICE</span>
                                                     <div className="flex items-center">
-                                                        <span className="text-sm font-black text-black/20 mr-1">₹</span>
+                                                        <span className="text-xs sm:text-sm font-black text-black/20 mr-1">₹</span>
                                                         <input
                                                             type="number"
                                                             value={stops[0].price}
                                                             onChange={(e) => updateStopPrice(stops[0].id, e.target.value)}
-                                                            className="w-full bg-transparent border-none outline-none font-black text-black text-center text-2xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                                            className="w-full bg-transparent border-none outline-none font-black text-black text-center text-xl sm:text-2xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                                                         />
                                                     </div>
                                                 </div>
-                                                <button onClick={() => adjustPrice('stop', stops[0].id, 50)} className="w-12 h-12 rounded-[20px] bg-black text-white flex items-center justify-center font-black hover:bg-[#f7d302] hover:text-black transition-all text-lg shadow-xl shadow-black/10">＋</button>
+                                                <button onClick={() => adjustPrice('stop', stops[0].id, 50)} className="w-10 h-10 sm:w-12 sm:h-12 rounded-[16px] sm:rounded-[20px] bg-black text-white flex items-center justify-center font-black hover:bg-[#f7d302] hover:text-black transition-all text-base sm:text-lg shadow-xl shadow-black/10">＋</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1046,35 +1046,35 @@ const RideCreationFlow: React.FC = () => {
                                 {stops.length > 1 && stops.map((s, idx) => {
                                     if (idx === 0) return null;
                                     return (
-                                        <div key={s.id} className="relative pl-24 pb-16 group animate-fade-in">
-                                            <div className="absolute left-[34px] top-6 bottom-0 w-2 bg-black/5 rounded-full group-hover:bg-[#f7d302]/10 transition-colors"></div>
-                                            <div className="absolute left-4 top-4 w-10 h-10 rounded-[16px] border-[4px] border-white bg-gray-200 z-20 flex items-center justify-center group-hover:bg-[#f7d302] group-hover:border-black transition-all duration-500 shadow-sm">
-                                                <span className="text-lg">📍</span>
+                                        <div key={s.id} className="relative pl-16 sm:pl-24 pb-12 sm:pb-16 group animate-fade-in">
+                                            <div className="absolute left-[26px] sm:left-[34px] top-6 bottom-0 w-1.5 sm:w-2 bg-black/5 rounded-full group-hover:bg-[#f7d302]/10 transition-colors"></div>
+                                            <div className="absolute left-4 top-4 w-8 h-8 sm:w-10 sm:h-10 rounded-[12px] sm:rounded-[16px] border-[3px] sm:border-[4px] border-white bg-gray-200 z-20 flex items-center justify-center group-hover:bg-[#f7d302] group-hover:border-black transition-all duration-500 shadow-sm">
+                                                <span className="text-base sm:text-lg">📍</span>
                                             </div>
 
-                                            <div className="flex flex-col md:flex-row justify-between items-center bg-white/70 backdrop-blur-sm p-8 rounded-[40px] shadow-lg border border-black/[0.02] group-hover:border-[#f7d302] transition-all relative z-10 group-hover:-translate-y-1">
+                                            <div className="flex flex-col md:flex-row justify-between items-center bg-white/70 backdrop-blur-sm p-5 sm:p-8 rounded-[32px] sm:rounded-[40px] shadow-lg border border-black/[0.02] group-hover:border-[#f7d302] transition-all relative z-10 group-hover:-translate-y-1">
                                                 <div className="flex-1 w-full mb-6 md:mb-0">
                                                     <div className="flex items-center gap-3 mb-2">
                                                         <span className="text-[10px] font-black text-black/40 bg-gray-100 px-3 py-1 rounded-full uppercase tracking-widest">LEG 0{idx + 1}</span>
                                                         <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">Waitpoint</span>
                                                     </div>
-                                                    <p className="font-black text-black/60 text-xl tracking-tighter leading-tight uppercase line-clamp-1">{stops[idx - 1].address.split(',')[0]} → {s.address.split(',')[0]}</p>
+                                                    <p className="font-black text-black/60 text-lg sm:text-xl tracking-tighter leading-tight uppercase line-clamp-1">{stops[idx - 1].address.split(',')[0]} → {s.address.split(',')[0]}</p>
                                                 </div>
-                                                <div className="flex items-center gap-4 bg-gray-50/50 p-4 rounded-[32px] shadow-inner group-hover:bg-[#f7d302]/10 transition-colors border border-transparent group-hover:border-[#f7d302]/20">
-                                                    <button onClick={() => adjustPrice('stop', s.id, -50)} className="w-12 h-12 rounded-[20px] bg-white text-black flex items-center justify-center font-black hover:bg-black hover:text-white transition-all text-lg shadow-sm">－</button>
-                                                    <div className="flex flex-col items-center w-24">
-                                                        <span className="text-[9px] font-black text-gray-400 uppercase tracking-wider mb-1">PRICE</span>
+                                                <div className="flex items-center gap-4 bg-gray-50/50 p-3 sm:p-4 rounded-[24px] sm:rounded-[32px] shadow-inner group-hover:bg-[#f7d302]/10 transition-colors border border-transparent group-hover:border-[#f7d302]/20">
+                                                    <button onClick={() => adjustPrice('stop', s.id, -50)} className="w-10 h-10 sm:w-12 sm:h-12 rounded-[16px] sm:rounded-[20px] bg-white text-black flex items-center justify-center font-black hover:bg-black hover:text-white transition-all text-base sm:text-lg shadow-sm">－</button>
+                                                    <div className="flex flex-col items-center w-20 sm:w-24">
+                                                        <span className="text-[8px] sm:text-[9px] font-black text-gray-400 uppercase tracking-wider mb-1">PRICE</span>
                                                         <div className="flex items-center">
-                                                            <span className="text-sm font-black text-black/20 mr-1">₹</span>
+                                                            <span className="text-xs sm:text-sm font-black text-black/20 mr-1">₹</span>
                                                             <input
                                                                 type="number"
                                                                 value={s.price}
                                                                 onChange={(e) => updateStopPrice(s.id, e.target.value)}
-                                                                className="w-full bg-transparent border-none outline-none font-black text-black text-center text-2xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                                                className="w-full bg-transparent border-none outline-none font-black text-black text-center text-xl sm:text-2xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                                                             />
                                                         </div>
                                                     </div>
-                                                    <button onClick={() => adjustPrice('stop', s.id, 50)} className="w-12 h-12 rounded-[20px] bg-black text-white flex items-center justify-center font-black hover:bg-[#f7d302] hover:text-black transition-all text-lg shadow-xl shadow-black/10">＋</button>
+                                                    <button onClick={() => adjustPrice('stop', s.id, 50)} className="w-10 h-10 sm:w-12 sm:h-12 rounded-[16px] sm:rounded-[20px] bg-black text-white flex items-center justify-center font-black hover:bg-[#f7d302] hover:text-black transition-all text-base sm:text-lg shadow-xl shadow-black/10">＋</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -1082,39 +1082,39 @@ const RideCreationFlow: React.FC = () => {
                                 })}
 
                                 {/* Final Segment: Target Arrival */}
-                                <div className="relative pl-24 group animate-fade-in">
-                                    <div className="absolute left-0 top-2 w-18 h-18 rounded-[28px] bg-black shadow-2xl shadow-black/30 z-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 scale-105 border-[5px] border-[#f7d302]/20">
+                                <div className="relative pl-16 sm:pl-24 group animate-fade-in">
+                                    <div className="absolute left-0 top-2 w-14 h-14 sm:w-18 sm:h-18 rounded-[20px] sm:rounded-[28px] bg-black shadow-2xl shadow-black/30 z-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 scale-105 border-[4px] sm:border-[5px] border-[#f7d302]/20">
                                         <div className="relative">
-                                            <span className="text-3xl">🏁</span>
-                                            <div className="absolute top-0 right-0 w-3 h-3 bg-[#f7d302] rounded-full animate-ping"></div>
+                                            <span className="text-2xl sm:text-3xl">🏁</span>
+                                            <div className="absolute top-0 right-0 w-2 h-2 sm:w-3 sm:h-3 bg-[#f7d302] rounded-full animate-ping"></div>
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-col md:flex-row justify-between items-center bg-black text-white p-8 rounded-[40px] shadow-2xl transition-all relative z-10 border-2 border-transparent group-hover:border-[#f7d302]/40">
+                                    <div className="flex flex-col md:flex-row justify-between items-center bg-black text-white p-5 sm:p-8 rounded-[32px] sm:rounded-[40px] shadow-2xl transition-all relative z-10 border-2 border-transparent group-hover:border-[#f7d302]/40">
                                         <div className="flex-1 w-full mb-6 md:mb-0">
                                             <div className="flex items-center gap-3 mb-2">
                                                 <span className="text-[10px] font-black text-black bg-[#f7d302] px-3 py-1 rounded-full uppercase tracking-widest italic">FINALE</span>
                                                 <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest">Dropoff</span>
                                             </div>
-                                            <p className="font-black text-white text-2xl tracking-tighter leading-tight uppercase line-clamp-1">
+                                            <p className="font-black text-white text-lg sm:text-2xl tracking-tighter leading-tight uppercase line-clamp-1">
                                                 {stops.length > 0 ? stops[stops.length - 1].address.split(',')[0] : source?.address.split(',')[0]} → {destination?.address.split(',')[0]}
                                             </p>
                                         </div>
-                                        <div className="flex items-center gap-4 bg-white/10 p-4 rounded-[32px] shadow-inner group-hover:bg-[#f7d302]/10 transition-colors border border-white/5 group-hover:border-[#f7d302]/20">
-                                            <button onClick={() => adjustPrice('final', null, -50)} className="w-12 h-12 rounded-[20px] bg-white/10 text-white flex items-center justify-center font-black hover:bg-white hover:text-black transition-all text-lg">－</button>
-                                            <div className="flex flex-col items-center w-24">
-                                                <span className="text-[9px] font-black text-white/30 uppercase tracking-wider mb-1">PRICE</span>
+                                        <div className="flex items-center gap-4 bg-white/10 p-3 sm:p-4 rounded-[24px] sm:rounded-[32px] shadow-inner group-hover:bg-[#f7d302]/10 transition-colors border border-white/5 group-hover:border-[#f7d302]/20">
+                                            <button onClick={() => adjustPrice('final', null, -50)} className="w-10 h-10 sm:w-12 sm:h-12 rounded-[16px] sm:rounded-[20px] bg-white/10 text-white flex items-center justify-center font-black hover:bg-white hover:text-black transition-all text-base sm:text-lg">－</button>
+                                            <div className="flex flex-col items-center w-20 sm:w-24">
+                                                <span className="text-[8px] sm:text-[9px] font-black text-white/30 uppercase tracking-wider mb-1">PRICE</span>
                                                 <div className="flex items-center">
-                                                    <span className="text-sm font-black text-white/20 mr-1">₹</span>
+                                                    <span className="text-xs sm:text-sm font-black text-white/20 mr-1">₹</span>
                                                     <input
                                                         type="number"
                                                         value={finalLegPrice}
                                                         onChange={(e) => setFinalLegPrice(e.target.value === '' ? '0' : e.target.value)}
-                                                        className="w-full bg-transparent border-none outline-none font-black text-white text-center text-2xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                                        className="w-full bg-transparent border-none outline-none font-black text-white text-center text-xl sm:text-2xl [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                                                     />
                                                 </div>
                                             </div>
-                                            <button onClick={() => adjustPrice('final', null, 50)} className="w-12 h-12 rounded-[20px] bg-[#f7d302] text-black flex items-center justify-center font-black hover:bg-white transition-all text-lg shadow-xl shadow-[#f7d302]/20">＋</button>
+                                            <button onClick={() => adjustPrice('final', null, 50)} className="w-10 h-10 sm:w-12 sm:h-12 rounded-[16px] sm:rounded-[20px] bg-[#f7d302] text-black flex items-center justify-center font-black hover:bg-white transition-all text-base sm:text-lg shadow-xl shadow-[#f7d302]/20">＋</button>
                                         </div>
                                     </div>
                                 </div>
