@@ -62,8 +62,8 @@ const Login: React.FC = () => {
                     <p className="text-[10px] font-black tracking-[0.3em] text-black/40">GENESIZED CARPOOLING</p>
                 </div>
 
-                <div className="bg-white p-10 lg:p-14 rounded-[48px] shadow-2xl border-4 border-black/5">
-                    <h2 className="text-4xl font-black text-black mb-10 tracking-tighter leading-none">
+                <div className="bg-white p-8 sm:p-10 lg:p-14 rounded-[32px] sm:rounded-[48px] shadow-2xl border-4 border-black/5">
+                    <h2 className="text-3xl sm:text-4xl font-black text-black mb-8 sm:mb-10 tracking-tighter leading-none">
                         Welcome <br />
                         <span className="bg-[#f7d302] px-3 py-1 inline-block -rotate-1 italic">Back</span>
                     </h2>

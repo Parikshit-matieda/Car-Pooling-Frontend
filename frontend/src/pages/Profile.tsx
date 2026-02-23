@@ -92,9 +92,9 @@ const Profile: React.FC = () => {
                 <div className="flex flex-col md:flex-row gap-8">
                     {/* Sidebar Navigation (Blinkit High Contrast) */}
                     <div className="md:w-72 flex-none">
-                        <div className="bg-white rounded-[32px] p-8 border border-gray-100 shadow-sm mb-6">
+                        <div className="bg-white rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 border border-gray-100 shadow-sm mb-6">
                             <div className="flex flex-col items-center mb-6">
-                                <div className="w-24 h-24 bg-[#f7d302] rounded-[32px] mb-4 flex items-center justify-center text-black text-4xl font-black shadow-inner overflow-hidden">
+                                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-[#f7d302] rounded-2xl sm:rounded-[32px] mb-4 flex items-center justify-center text-black text-3xl sm:text-4xl font-black shadow-inner overflow-hidden">
                                     {(user as any)?.profile_photo ? (
                                         <img
                                             src={`http://localhost:5000/${(user as any).profile_photo}`}
@@ -105,34 +105,34 @@ const Profile: React.FC = () => {
                                         user?.full_name?.charAt(0)
                                     )}
                                 </div>
-                                <h1 className="text-2xl font-black text-black text-center">{user?.full_name}</h1>
-                                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 mt-1">{user?.role} Member</span>
+                                <h1 className="text-xl sm:text-2xl font-black text-black text-center">{user?.full_name}</h1>
+                                <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-gray-400 mt-1">{user?.role} Member</span>
                             </div>
 
-                            <nav className="space-y-1">
+                            <nav className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 items-center">
                                 <button
                                     onClick={() => setActiveTab('about')}
-                                    className={`w-full text-left px-5 py-3.5 rounded-2xl font-black text-sm transition-all flex items-center gap-3 ${activeTab === 'about' ? 'bg-black text-white shadow-lg' : 'text-gray-500 hover:bg-gray-50'} `}
+                                    className={`whitespace-nowrap flex-1 md:w-full text-left px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl font-black text-[10px] sm:text-sm transition-all flex items-center gap-2 sm:gap-3 ${activeTab === 'about' ? 'bg-black text-white shadow-lg' : 'text-gray-500 hover:bg-gray-50'} `}
                                 >
-                                    <span className="text-xl">👤</span>
-                                    Account Info
+                                    <span className="text-lg">👤</span>
+                                    Account
                                 </button>
                                 <button
                                     onClick={() => setActiveTab('vehicles')}
-                                    className={`w-full text-left px-5 py-3.5 rounded-2xl font-black text-sm transition-all flex items-center gap-3 ${activeTab === 'vehicles' ? 'bg-black text-white shadow-lg' : 'text-gray-500 hover:bg-gray-50'} `}
+                                    className={`whitespace-nowrap flex-1 md:w-full text-left px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl font-black text-[10px] sm:text-sm transition-all flex items-center gap-2 sm:gap-3 ${activeTab === 'vehicles' ? 'bg-black text-white shadow-lg' : 'text-gray-500 hover:bg-gray-50'} `}
                                 >
-                                    <span className="text-xl">🚗</span>
-                                    My Vehicles
+                                    <span className="text-lg">🚗</span>
+                                    Vehicles
                                 </button>
                             </nav>
                         </div>
                     </div>
 
                     {/* Main Content Area */}
-                    <div className="flex-1 bg-white rounded-[40px] border border-gray-100 p-8 md:p-12 shadow-sm animate-fade-in">
+                    <div className="flex-1 bg-white rounded-[32px] sm:rounded-[40px] border border-gray-100 p-6 sm:p-8 md:p-12 shadow-sm animate-fade-in text-xs sm:text-base">
                         {activeTab === 'about' && (
                             <div>
-                                <h2 className="text-4xl font-black text-black mb-10 tracking-tight">Account Basics</h2>
+                                <h2 className="text-2xl sm:text-4xl font-black text-black mb-8 sm:mb-10 tracking-tight">Account Basics</h2>
                                 <div className="space-y-10">
                                     <div className="pb-8 border-b border-gray-50">
                                         <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Display Name</p>
@@ -173,17 +173,17 @@ const Profile: React.FC = () => {
                                     </div>
 
                                     {!loading && vehicles.length === 0 && (
-                                        <div className="bg-[#f7d302]/10 p-8 rounded-[32px] border border-[#f7d302]/20 flex flex-col md:flex-row items-center justify-between gap-6">
-                                            <div>
-                                                <h4 className="text-lg font-black text-black mb-1 leading-none">Ready to start driving?</h4>
-                                                <p className="text-xs font-bold text-black/50 tracking-tight mt-1">Add your vehicle details now to start offering rides.</p>
+                                        <div className="bg-[#f7d302]/10 p-6 sm:p-8 rounded-[24px] sm:rounded-[32px] border border-[#f7d302]/20 flex flex-col md:flex-row items-center justify-between gap-6">
+                                            <div className="text-center md:text-left">
+                                                <h4 className="text-base sm:text-lg font-black text-black mb-1 leading-none">Ready to start driving?</h4>
+                                                <p className="text-[10px] sm:text-xs font-bold text-black/50 tracking-tight mt-1">Add your vehicle details now to start offering rides.</p>
                                             </div>
                                             <button
                                                 onClick={() => {
                                                     setActiveTab('vehicles');
                                                     setIsAdding(true);
                                                 }}
-                                                className="bg-[#f7d302] text-black px-8 py-3 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-lg shadow-yellow-400/10 whitespace-nowrap"
+                                                className="w-full md:w-auto bg-[#f7d302] text-black px-8 py-3 rounded-2xl font-black text-[10px] sm:text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-lg shadow-yellow-400/10 whitespace-nowrap"
                                             >
                                                 Add Vehicle ➔
                                             </button>
@@ -195,8 +195,8 @@ const Profile: React.FC = () => {
 
                         {activeTab === 'vehicles' && (
                             <div>
-                                <div className="flex justify-between items-center mb-10">
-                                    <h2 className="text-4xl font-black text-black tracking-tight">Vehicles</h2>
+                                <div className="flex justify-between items-center mb-8 sm:mb-10">
+                                    <h2 className="text-2xl sm:text-4xl font-black text-black tracking-tight">Vehicles</h2>
                                     {!isAdding && (
                                         <button
                                             onClick={() => setIsAdding(true)}

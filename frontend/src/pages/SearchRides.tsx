@@ -211,27 +211,27 @@ const SearchRides: React.FC = () => {
             <Navbar />
 
             {/* Search Header (Blinkit High Contrast) Centered */}
-            <div className="bg-[#f7d302] border-b border-black/5 p-6 md:p-8 sticky top-20 z-40 shadow-sm">
-                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
-                    <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-[#f7d302] border-b border-black/5 p-4 md:p-8 sticky top-20 z-40 shadow-sm">
+                <div className="max-w-7xl mx-auto flex flex-col xl:flex-row gap-4 md:gap-6">
+                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div className="relative">
-                            <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-1.5 ml-1">Pickup From</label>
+                            <label className="block text-[8px] md:text-[10px] font-black text-black/40 uppercase tracking-widest mb-1 md:mb-1.5 ml-1">Pickup From</label>
                             <input
                                 type="text"
                                 value={searchPickup}
                                 onChange={(e) => setSearchPickup(e.target.value)}
                                 placeholder="Starting City..."
-                                className="w-full px-5 py-4 bg-white/40 border border-black/5 focus:bg-white rounded-2xl outline-none font-black transition-all text-sm placeholder:text-black/20"
+                                className="w-full px-4 md:px-5 py-3 md:py-4 bg-white/40 border border-black/5 focus:bg-white rounded-xl md:rounded-2xl outline-none font-black transition-all text-xs md:text-sm placeholder:text-black/20"
                             />
                             {isSearching && searchingFor === 'pickup' && (
-                                <div className="absolute right-4 top-[38px]">
-                                    <div className="w-4 h-4 border-2 border-black/10 border-t-black rounded-full animate-spin"></div>
+                                <div className="absolute right-4 top-[32px] md:top-[38px]">
+                                    <div className="w-3 md:w-4 h-3 md:h-4 border-2 border-black/10 border-t-black rounded-full animate-spin"></div>
                                 </div>
                             )}
                             {searchingFor === 'pickup' && searchResults.length > 0 && (
-                                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden animate-in fade-in slide-in-from-top-2">
+                                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl md:rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden animate-in fade-in slide-in-from-top-2">
                                     {searchResults.map(r => (
-                                        <button key={r.id} onClick={() => { setPickup({ lat: r.lat, lng: r.lon, address: r.name }); setSearchPickup(r.name); setSearchResults([]); }} className="w-full text-left px-5 py-3.5 hover:bg-[#f7d302]/20 font-black transition-all border-b border-gray-50 last:border-none flex items-center gap-3 text-xs text-gray-700">
+                                        <button key={r.id} onClick={() => { setPickup({ lat: r.lat, lng: r.lon, address: r.name }); setSearchPickup(r.name); setSearchResults([]); }} className="w-full text-left px-4 md:px-5 py-2.5 md:py-3.5 hover:bg-[#f7d302]/20 font-black transition-all border-b border-gray-50 last:border-none flex items-center gap-3 text-[10px] md:text-xs text-gray-700">
                                             <span className="truncate">{r.name}</span>
                                         </button>
                                     ))}
@@ -240,23 +240,23 @@ const SearchRides: React.FC = () => {
                         </div>
 
                         <div className="relative">
-                            <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-1.5 ml-1">Going To</label>
+                            <label className="block text-[8px] md:text-[10px] font-black text-black/40 uppercase tracking-widest mb-1 md:mb-1.5 ml-1">Going To</label>
                             <input
                                 type="text"
                                 value={searchDropoff}
                                 onChange={(e) => setSearchDropoff(e.target.value)}
                                 placeholder="Destination..."
-                                className="w-full px-5 py-4 bg-white/40 border border-black/5 focus:bg-white rounded-2xl outline-none font-black transition-all text-sm placeholder:text-black/20"
+                                className="w-full px-4 md:px-5 py-3 md:py-4 bg-white/40 border border-black/5 focus:bg-white rounded-xl md:rounded-2xl outline-none font-black transition-all text-xs md:text-sm placeholder:text-black/20"
                             />
                             {isSearching && searchingFor === 'dropoff' && (
-                                <div className="absolute right-4 top-[38px]">
-                                    <div className="w-4 h-4 border-2 border-black/10 border-t-black rounded-full animate-spin"></div>
+                                <div className="absolute right-4 top-[32px] md:top-[38px]">
+                                    <div className="w-3 md:w-4 h-3 md:h-4 border-2 border-black/10 border-t-black rounded-full animate-spin"></div>
                                 </div>
                             )}
                             {searchingFor === 'dropoff' && searchResults.length > 0 && (
-                                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden animate-in fade-in slide-in-from-top-2">
+                                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl md:rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden animate-in fade-in slide-in-from-top-2">
                                     {searchResults.map(r => (
-                                        <button key={r.id} onClick={() => { setDropoff({ lat: r.lat, lng: r.lon, address: r.name }); setSearchDropoff(r.name); setSearchResults([]); }} className="w-full text-left px-5 py-3.5 hover:bg-[#f7d302]/20 font-black transition-all border-b border-gray-50 last:border-none flex items-center gap-3 text-xs text-gray-700">
+                                        <button key={r.id} onClick={() => { setDropoff({ lat: r.lat, lng: r.lon, address: r.name }); setSearchDropoff(r.name); setSearchResults([]); }} className="w-full text-left px-4 md:px-5 py-2.5 md:py-3.5 hover:bg-[#f7d302]/20 font-black transition-all border-b border-gray-50 last:border-none flex items-center gap-3 text-[10px] md:text-xs text-gray-700">
                                             <span className="truncate">{r.name}</span>
                                         </button>
                                     ))}
@@ -265,23 +265,23 @@ const SearchRides: React.FC = () => {
                         </div>
 
                         <div>
-                            <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-1.5 ml-1">Journey Date</label>
-                            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full px-5 py-4 bg-white/40 border border-black/5 focus:bg-white rounded-2xl outline-none font-black transition-all text-sm cursor-pointer" />
+                            <label className="block text-[8px] md:text-[10px] font-black text-black/40 uppercase tracking-widest mb-1 md:mb-1.5 ml-1">Journey Date</label>
+                            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full px-4 md:px-5 py-3 md:py-4 bg-white/40 border border-black/5 focus:bg-white rounded-xl md:rounded-2xl outline-none font-black transition-all text-xs md:text-sm cursor-pointer" />
                         </div>
 
                         <div>
-                            <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-1.5 ml-1">Passengers</label>
-                            <div className="flex items-center bg-white/40 border border-black/5 rounded-2xl px-2 h-[52px]">
-                                <button onClick={() => setSeats(Math.max(1, seats - 1))} className="w-10 h-10 flex items-center justify-center font-black hover:bg-black/10 rounded-xl transition-colors">－</button>
-                                <span className="flex-1 text-center font-black text-sm">{seats}</span>
-                                <button onClick={() => setSeats(Math.min(6, seats + 1))} className="w-10 h-10 flex items-center justify-center font-black hover:bg-black/10 rounded-xl transition-colors">＋</button>
+                            <label className="block text-[8px] md:text-[10px] font-black text-black/40 uppercase tracking-widest mb-1 md:mb-1.5 ml-1">Passengers</label>
+                            <div className="flex items-center bg-white/40 border border-black/5 rounded-xl md:rounded-2xl px-2 h-10 md:h-[52px]">
+                                <button onClick={() => setSeats(Math.max(1, seats - 1))} className="w-8 md:w-10 h-8 md:h-10 flex items-center justify-center font-black hover:bg-black/10 rounded-lg transition-colors text-xs md:text-sm">－</button>
+                                <span className="flex-1 text-center font-black text-xs md:text-sm">{seats}</span>
+                                <button onClick={() => setSeats(Math.min(6, seats + 1))} className="w-8 md:w-10 h-8 md:h-10 flex items-center justify-center font-black hover:bg-black/10 rounded-lg transition-colors text-xs md:text-sm">＋</button>
                             </div>
                         </div>
                     </div>
                     <button
                         onClick={fetchRides}
                         disabled={!pickup || !dropoff || loading}
-                        className={`px-12 py-4 rounded-2xl font-black text-sm uppercase tracking-widest transition-all h-[52px] mt-auto shadow-xl ${(!pickup || !dropoff || loading) ? 'bg-black/20 text-black/30 cursor-not-allowed shadow-none' : 'bg-black text-white hover:bg-gray-900 shadow-black/10 active:scale-95'}`}
+                        className={`w-full xl:w-auto px-12 py-3 md:py-4 rounded-xl md:rounded-2xl font-black text-xs md:text-sm uppercase tracking-widest transition-all md:h-[52px] mt-auto shadow-xl ${(!pickup || !dropoff || loading) ? 'bg-black/20 text-black/30 cursor-not-allowed shadow-none' : 'bg-black text-white hover:bg-gray-900 shadow-black/10 active:scale-95'}`}
                     >
                         {loading ? 'Finding...' : 'Find Rides'}
                     </button>

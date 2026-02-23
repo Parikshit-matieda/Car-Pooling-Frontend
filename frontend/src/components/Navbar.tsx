@@ -9,6 +9,7 @@ const Navbar: React.FC = () => {
     const navigate = useNavigate();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isNotifOpen, setIsNotifOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [notifications, setNotifications] = useState<any[]>([]);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const notifRef = useRef<HTMLDivElement>(null);
@@ -47,6 +48,17 @@ const Navbar: React.FC = () => {
 
     const unreadCount = notifications.filter(n => !n.is_read).length;
 
+    // Reset mobile menu on resize
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 768) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     // Close dropdowns when clicking outside
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -66,8 +78,16 @@ const Navbar: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between gap-4">
 
                 {/* Logo Section */}
-                <div className="flex items-center gap-8">
-                    <Link to="/" className="text-3xl font-black text-black tracking-tighter flex items-center shrink-0 normal-case" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                <div className="flex items-center gap-4 md:gap-8">
+                    {/* Hamburger Menu Button (Mobile Only) */}
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="md:hidden w-10 h-10 flex items-center justify-center text-2xl hover:bg-black/5 rounded-xl transition-colors"
+                    >
+                        {isMobileMenuOpen ? '✕' : '☰'}
+                    </button>
+
+                    <Link to="/" className="text-2xl md:text-3xl font-black text-black tracking-tighter flex items-center shrink-0 normal-case" style={{ fontFamily: "'Outfit', sans-serif" }}>
                         <span className="mr-1">⚡</span> blink<span className="text-black/60">ride</span>
                     </Link>
 
@@ -76,25 +96,25 @@ const Navbar: React.FC = () => {
                     </Link>
 
                     {isAuthenticated && (
-                        <>
-                            <Link to="/my-rides" className="hidden md:block text-xs font-black uppercase tracking-widest text-black/60 hover:text-black transition-colors ml-4">
+                        <div className="hidden md:flex items-center">
+                            <Link to="/my-rides" className="text-xs font-black uppercase tracking-widest text-black/60 hover:text-black transition-colors ml-4">
                                 My Rides
                             </Link>
                             <Link
                                 to="/my-rides"
                                 state={{ tab: 'TAKEN', activeTab: 'ACTIVE', autoTrack: true }}
-                                className="hidden md:block text-xs font-black uppercase tracking-widest text-black/60 hover:text-black transition-colors ml-4"
+                                className="text-xs font-black uppercase tracking-widest text-black/60 hover:text-black transition-colors ml-4"
                             >
                                 Track My Ride
                             </Link>
                             <Link
                                 to="/my-rides"
                                 state={{ tab: 'TAKEN', activeTab: 'HISTORY' }}
-                                className="hidden md:flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-black/60 hover:text-black transition-colors ml-4"
+                                className="flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-black/60 hover:text-black transition-colors ml-4"
                             >
                                 <span>⭐</span> Reviews &amp; Ratings
                             </Link>
-                        </>
+                        </div>
                     )}
                 </div>
 
@@ -196,7 +216,7 @@ const Navbar: React.FC = () => {
                             </div>
                         </>
                     ) : (
-                        <div className="flex items-center gap-2">
+                        <div className="hidden md:flex items-center gap-2">
                             <Link to="/login" className="px-5 py-2.5 text-black font-black text-sm hover:underline">Login</Link>
                             <Link to="/register" className="bg-black text-white px-6 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-black/80 transition-all shadow-lg shadow-black/10">Sign Up</Link>
                         </div>
@@ -209,6 +229,72 @@ const Navbar: React.FC = () => {
                     </Link>
                 </div>
             </div>
+
+            {/* Mobile Menu Overlay */}
+            {isMobileMenuOpen && (
+                <div className="md:hidden fixed inset-0 top-20 bg-white z-[40] animate-in fade-in slide-in-from-top-4 duration-300">
+                    <div className="p-6 space-y-4">
+                        <Link
+                            to="/"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block px-6 py-4 bg-gray-50 rounded-2xl font-black text-sm uppercase tracking-widest text-black hover:bg-[#f7d302] transition-all"
+                        >
+                            🏠 Home
+                        </Link>
+
+                        {isAuthenticated ? (
+                            <>
+                                <Link
+                                    to="/my-rides"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block px-6 py-4 bg-gray-50 rounded-2xl font-black text-sm uppercase tracking-widest text-black hover:bg-[#f7d302] transition-all"
+                                >
+                                    🚗 My Rides
+                                </Link>
+                                <Link
+                                    to="/my-rides"
+                                    state={{ tab: 'TAKEN', activeTab: 'ACTIVE', autoTrack: true }}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block px-6 py-4 bg-gray-50 rounded-2xl font-black text-sm uppercase tracking-widest text-black hover:bg-[#f7d302] transition-all"
+                                >
+                                    🛰️ Track My Ride
+                                </Link>
+                                <Link
+                                    to="/dashboard"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block px-6 py-4 bg-gray-50 rounded-2xl font-black text-sm uppercase tracking-widest text-black hover:bg-[#f7d302] transition-all"
+                                >
+                                    📊 Dashboard
+                                </Link>
+                                <Link
+                                    to="/create-ride"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block px-6 py-4 bg-[#0c831f] text-white rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-[#0c831f]/90 transition-all shadow-lg"
+                                >
+                                    ➕ Publish Ride
+                                </Link>
+                            </>
+                        ) : (
+                            <div className="grid grid-cols-2 gap-4">
+                                <Link
+                                    to="/login"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="flex items-center justify-center px-6 py-4 bg-gray-100 rounded-2xl font-black text-sm uppercase tracking-widest text-black"
+                                >
+                                    Login
+                                </Link>
+                                <Link
+                                    to="/register"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="flex items-center justify-center px-6 py-4 bg-black rounded-2xl font-black text-sm uppercase tracking-widest text-white shadow-lg"
+                                >
+                                    Sign Up
+                                </Link>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
         </nav>
     );
 };
