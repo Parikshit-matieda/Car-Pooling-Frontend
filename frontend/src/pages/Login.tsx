@@ -12,6 +12,8 @@ const Login: React.FC = () => {
         password: '',
     });
     const [error, setError] = useState('');
+    const [emailNotVerified, setEmailNotVerified] = useState(false); // ← NEW
+    const [loading, setLoading] = useState(false); // ← NEW
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,13 +22,24 @@ const Login: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
+        setEmailNotVerified(false); // ← NEW
 
         try {
+            setLoading(true); // ← NEW
             const response = await api.post('/auth/login', formData);
             login(response.data.token, response.data.user);
             navigate('/');
         } catch (err: any) {
-            setError(err.response?.data?.message || 'Login failed');
+            const msg: string = err.response?.data?.message || 'Login failed';
+            // ← CHANGED: special handling for unverified email
+            if (err.response?.status === 403 && msg.toLowerCase().includes('not verified')) {
+                setEmailNotVerified(true);
+                setError('Your email is not verified. Please check your inbox for the OTP.');
+            } else {
+                setError(msg);
+            }
+        } finally {
+            setLoading(false); // ← NEW
         }
     };
 
@@ -49,12 +62,10 @@ const Login: React.FC = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#f7d302] p-6 lg:p-12 relative overflow-hidden font-sans">
-            {/* Background Decorative Elements */}
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-black/5 rounded-full blur-3xl"></div>
             <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-black/5 rounded-full blur-3xl"></div>
 
             <div className="max-w-md w-full animate-fade-in relative z-10">
-                {/* Branding */}
                 <div className="text-center mb-10">
                     <h1 className="text-5xl lg:text-6xl font-black text-black tracking-tighter mb-2 normal-case" style={{ fontFamily: "'Outfit', sans-serif" }}>
                         ⚡ blink<span className="bg-black text-[#f7d302] px-2 rounded-lg">ride</span>
@@ -68,9 +79,19 @@ const Login: React.FC = () => {
                         <span className="bg-[#f7d302] px-3 py-1 inline-block -rotate-1 italic">Back</span>
                     </h2>
 
+                    {/* ← CHANGED: error block now shows "Go Verify" button when email not verified */}
                     {error && (
-                        <div className="bg-red-50 text-red-600 p-5 rounded-2xl mb-8 font-black text-[10px] tracking-widest flex items-center gap-3 border border-red-100">
-                            ⚠️ {error}
+                        <div className="bg-red-50 text-red-600 p-5 rounded-2xl mb-8 font-black text-[10px] tracking-widest flex flex-col gap-3 border border-red-100">
+                            <span>⚠️ {error}</span>
+                            {emailNotVerified && (
+                                <button
+                                    type="button"
+                                    onClick={() => navigate('/verify-email', { state: { email: formData.email } })}
+                                    className="self-start bg-red-600 text-white text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-xl hover:bg-red-700 transition-all"
+                                >
+                                    Go Verify Email →
+                                </button>
+                            )}
                         </div>
                     )}
 
@@ -83,8 +104,9 @@ const Login: React.FC = () => {
                                     type="email"
                                     name="email"
                                     required
+                                    value={formData.email} // ← NEW: controlled input
                                     className="w-full pl-18 pr-6 py-6 bg-gray-50 border-2 border-transparent focus:border-black focus:bg-white rounded-[28px] outline-none font-black transition-all text-sm shadow-inner placeholder:text-gray-300"
-                                    placeholder="your@email.com"
+                                    placeholder="your@charusat.edu.in"
                                     onChange={handleChange}
                                 />
                             </div>
@@ -98,6 +120,7 @@ const Login: React.FC = () => {
                                     type="password"
                                     name="password"
                                     required
+                                    value={formData.password} // ← NEW: controlled input
                                     className="w-full pl-18 pr-6 py-6 bg-gray-50 border-2 border-transparent focus:border-black focus:bg-white rounded-[28px] outline-none font-black transition-all text-sm shadow-inner placeholder:text-gray-300"
                                     placeholder="••••••••"
                                     onChange={handleChange}
@@ -105,11 +128,13 @@ const Login: React.FC = () => {
                             </div>
                         </div>
 
+                        {/* ← CHANGED: disabled while loading */}
                         <button
                             type="submit"
-                            className="w-full bg-black text-white py-6 rounded-[28px] font-black text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-[#f7d302] hover:text-black transition-all active:scale-95 flex items-center justify-center gap-4"
+                            disabled={loading}
+                            className="w-full bg-black text-white py-6 rounded-[28px] font-black text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-[#f7d302] hover:text-black transition-all active:scale-95 flex items-center justify-center gap-4 disabled:opacity-60 disabled:cursor-not-allowed"
                         >
-                            Authorize ⚡
+                            {loading ? 'Authorizing...' : 'Authorize ⚡'}
                         </button>
                     </form>
 
