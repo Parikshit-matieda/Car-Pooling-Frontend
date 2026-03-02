@@ -1,0 +1,193 @@
+﻿
+> carpool-frontend@0.0.0 lint
+> eslint .
+
+
+C:\Users\parik\Downloads\frontend\src\components\LiveTrackingMap.tsx
+  12:37  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\components\Navbar.tsx
+  12:56  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\components\RatePassengersModal.tsx
+  13:11  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  84:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\components\RatingModal.tsx
+  36:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\context\AuthContext.tsx
+  39:13  error    Error: Cannot access variable before it is declared
+
+`refreshUser` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\parik\Downloads\frontend\src\context\AuthContext.tsx:39:13
+  37 |     useEffect(() => {
+  38 |         if (token) {
+> 39 |             refreshUser();
+     |             ^^^^^^^^^^^ `refreshUser` accessed before it is declared
+  40 |         }
+  41 |     }, [token]);
+  42 |
+
+C:\Users\parik\Downloads\frontend\src\context\AuthContext.tsx:57:5
+  55 |     }, []);
+  56 |
+> 57 |     const refreshUser = useCallback(async () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 58 |         try {
+     | ^^^^^^^^^^^^^
+> 59 |             const response = await api.get('/users/me');
+     | ^^^^^^^^^^^^^
+> 60 |             const updatedUser = response.data;
+     | ^^^^^^^^^^^^^
+> 61 |             setUser(updatedUser);
+     | ^^^^^^^^^^^^^
+> 62 |             sessionStorage.setItem('user', JSON.stringify(updatedUser));
+     | ^^^^^^^^^^^^^
+> 63 |         } catch (error) {
+     | ^^^^^^^^^^^^^
+> 64 |             console.error('Failed to refresh user:', error);
+     | ^^^^^^^^^^^^^
+> 65 |         }
+     | ^^^^^^^^^^^^^
+> 66 |     }, []);
+     | ^^^^^^^^^^^^ `refreshUser` is declared here
+  67 |
+  68 |     const isAuthenticated = !!token && !!user;
+  69 |     const isAdmin = user?.role === 'ADMIN';  react-hooks/immutability
+  41:8   warning  React Hook useEffect has a missing dependency: 'refreshUser'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react-hooks/exhaustive-deps
+  78:14  error    Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react-refresh/only-export-components
+
+C:\Users\parik\Downloads\frontend\src\pages\AdminDashboard.tsx
+   90:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  106:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  120:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  129:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  142:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\pages\CompleteProfile.tsx
+  52:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\pages\CreateRide.tsx
+  47:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\pages\Landing.tsx
+   62:12  error    Unexpected any. Specify a different type                                                                           @typescript-eslint/no-explicit-any
+  104:60  error    Unexpected any. Specify a different type                                                                           @typescript-eslint/no-explicit-any
+  111:44  error    Unexpected any. Specify a different type                                                                           @typescript-eslint/no-explicit-any
+  112:50  error    Unexpected any. Specify a different type                                                                           @typescript-eslint/no-explicit-any
+  148:8   warning  React Hook useEffect has a missing dependency: 'fetchTemplates'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  252:23  error    Unexpected any. Specify a different type                                                                           @typescript-eslint/no-explicit-any
+  282:8   warning  React Hook useEffect has a missing dependency: 'searchingFor'. Either include it or remove the dependency array    react-hooks/exhaustive-deps
+  294:8   warning  React Hook useEffect has a missing dependency: 'searchingFor'. Either include it or remove the dependency array    react-hooks/exhaustive-deps
+  302:48  error    Unexpected any. Specify a different type                                                                           @typescript-eslint/no-explicit-any
+  350:23  error    Unexpected any. Specify a different type                                                                           @typescript-eslint/no-explicit-any
+  390:23  error    Unexpected any. Specify a different type                                                                           @typescript-eslint/no-explicit-any
+  787:88  error    Expected an assignment or function call and instead saw an expression                                              @typescript-eslint/no-unused-expressions
+
+C:\Users\parik\Downloads\frontend\src\pages\Login.tsx
+  28:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  33:60  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  45:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\pages\MyRides.tsx
+   19:50  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   19:66  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   19:84  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   23:54  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   29:78  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   33:60  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   54:57  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   62:57  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   73:51  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  115:39  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  148:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  157:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  177:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  184:69  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  276:62  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  319:64  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\pages\Profile.tsx
+   73:23   error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   98:47   error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  100:84   error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  153:47   error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  157:65   error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  157:105  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  157:147  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  158:59   error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  158:128  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  158:161  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  167:69   error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\pages\PublicProfile.tsx
+  89:27  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\pages\Register.tsx
+  61:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  66:60  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  78:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\pages\RideCreationFlow.tsx
+   58:57  error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+   64:22  error    'e' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  123:60  error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+  197:8   warning  React Hook useEffect has a missing dependency: 'searchingFor'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  209:8   warning  React Hook useEffect has a missing dependency: 'searchingFor'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  221:8   warning  React Hook useEffect has a missing dependency: 'searchingFor'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  240:46  error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+  260:59  error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+  271:18  error    'err' is defined but never used                                                                                  @typescript-eslint/no-unused-vars
+  368:23  error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\pages\SearchRides.tsx
+   55:56  error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+   98:8   warning  React Hook useEffect has a missing dependency: 'searchingFor'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  110:8   warning  React Hook useEffect has a missing dependency: 'searchingFor'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  118:46  error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+  152:23  error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+  189:23  error    Unexpected any. Specify a different type                                                                         @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\pages\UploadLicense.tsx
+  50:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\parik\Downloads\frontend\src\pages\UserDashboard.tsx
+  16:58  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-explicit-any
+  21:9   error  Error: Cannot access variable before it is declared
+
+`refreshData` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\parik\Downloads\frontend\src\pages\UserDashboard.tsx:21:9
+  19 |
+  20 |     useEffect(() => {
+> 21 |         refreshData().finally(() => setLoading(false));
+     |         ^^^^^^^^^^^ `refreshData` accessed before it is declared
+  22 |     }, []);
+  23 |
+  24 |     const refreshData = async () => {
+
+C:\Users\parik\Downloads\frontend\src\pages\UserDashboard.tsx:24:5
+  22 |     }, []);
+  23 |
+> 24 |     const refreshData = async () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 25 |         try {
+     | ^^^^^^^^^^^^^
+> 26 |             const response = await api.get('/users/me/dashboard');
+     ΓÇª
+     | ^^^^^^^^^^^^^
+> 40 |         }
+     | ^^^^^^^^^^^^^
+> 41 |     };
+     | ^^^^^^^ `refreshData` is declared here
+  42 |
+  43 |
+  44 |     if (loading) {  react-hooks/immutability
+
+C:\Users\parik\Downloads\frontend\src\pages\VerifyEmail.tsx
+  27:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Γ£û 81 problems (72 errors, 9 warnings)
+
