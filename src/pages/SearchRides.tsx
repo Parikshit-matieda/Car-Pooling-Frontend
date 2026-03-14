@@ -49,7 +49,6 @@ interface Ride {
 }
 
 const SearchRides: React.FC = () => {
-    const navigate = useNavigate();
 
     // Search inputs
     const [pickup, setPickup] = useState<Location | null>(null);
